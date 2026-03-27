@@ -20,18 +20,42 @@ public class Flight {
     }
 
     // public boolean addTicket(Ticket t) {
-
-    // }
+    public boolean addTicket(Ticket t) {
+    if(numOfTickets==tickets.lenght||searchTicket(t)!=-1)
+    return false;
+    tickets[numOfTickets++]=t;
+    return true;
+    }
+    // } 
 
     // public boolean removeTicket(String id) {
-
+    public boolean removeTicket(Ticket t){
+    int removedTicket = searchTicket(t);
+    if(searchTicket(t)==-1)
+        return false;
+    tickets[removedTicket]=tickets[numOfTickets-1];
+    tickets[numOfTickets-1]=null;
+    numOfTickets--;
+    return true;
+    }
     // }
 
     // public Ticket searchTicket(String id) {
-
+public int searchTicket(Ticket id){
+    for (int i=0;i<numOfTickets;i++)
+        if(tickets[i].getTicketId().equals(id.getTicketId()))
+            return i;
+    return -1;
+}
     // }
 
     // public String toString() {
-
+public String toString(){
+    String str = "flightNumber :" + flightNumber + " origin :" + origin + " destination :" + destination + " departureTime :" + departureTime + " arrivalTime :" + arrivalTime + " status:";
+    for (int i=0;i<numOfTickets;i++){
+        str+= (i+1)+ tickets[i].toString +"\n";
+    }
+    return str;
+}
     // }
 }
