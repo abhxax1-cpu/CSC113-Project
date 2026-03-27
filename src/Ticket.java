@@ -10,7 +10,9 @@ public abstract class Ticket implements Refundable {
         this.seatNumber = seatNumber;
         this.basePrice = basePrice;
     }
-
+public String getTicketId(){
+    return ticketId;
+}
     public abstract double getBaggageAllowance();
     public abstract double calculateRefundAmount();
     public abstract boolean isRefundable();
